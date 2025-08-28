@@ -9,7 +9,7 @@
 
 body {
   background-color: #FBF9D1;
-/*   background-image: url("background-plain.png"); */
+  background-image: url("background-plain.png");
   padding: 20px;
   color: #333;
 }
@@ -70,4 +70,5 @@ h1 {
   color: #2c3e50;
   text-align: center;
 }
+
 
