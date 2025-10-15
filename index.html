@@ -147,8 +147,44 @@
         </div>
       </div>
         </a>
+
+        <div class="web-stats">
+        <p>Statistik web: <span id="visitorCount">-</span></p>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi sederhana untuk update counter
+      async function updateVisitorCounter() {
+        try {
+          // Gunakan CountAPI
+          const response = await fetch(
+            "https://api.countapi.xyz/hit/web-syarat.vercel.app/visits"
+          );
+          const data = await response.json();
+
+          // Update tampilan
+          document.getElementById("visitorCount").textContent = data.value;
+        } catch (error) {
+          // Fallback ke localStorage jika error
+          let currentCount = localStorage.getItem("localVisitorCount");
+          if (!currentCount) {
+            currentCount = 1;
+          } else {
+            currentCount = parseInt(currentCount) + 1;
+          }
+          localStorage.setItem("localVisitorCount", currentCount);
+          document.getElementById("visitorCount").textContent = currentCount;
+        }
+      }
+
+      // Jalankan saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", updateVisitorCounter);
+    </script>
   </body>
 </html>
+
+
 
 
 
